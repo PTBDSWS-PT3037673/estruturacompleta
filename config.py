@@ -15,9 +15,14 @@ class Config:
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-    API_KEY = os.environ.get('API_KEY')
-    API_URL = os.environ.get('API_URL')
-    API_FROM = os.environ.get('API_FROM')
+    API_KEY = os.environ.get('SENDGRID_API_KEY') or os.environ.get('API_KEY')
+    API_URL = os.environ.get('API_URL', 'https://api.sendgrid.com/v3/mail/send')
+    API_FROM = os.environ.get('API_FROM', 'moura.rodrigues@aluno.ifsp.edu.br')
+
+    EMAIL_INSTITUCIONAL = 'moura.rodrigues@aluno.ifsp.edu.br'
+    EMAIL_PROFESSOR = 'flaskaulasweb@zohomail.com'
+    PRONTUARIO = 'PT3038211'
+    NOME_ALUNO = 'Lucas Rodrigues de Moura'
 
     @staticmethod
     def init_app(app):
